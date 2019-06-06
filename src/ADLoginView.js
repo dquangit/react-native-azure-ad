@@ -83,6 +83,7 @@ export default class ADLoginView extends React.Component {
     return (
         this.state.visible ? (<WebView
           ref="ADLoginView"
+          originWhitelist={['*']}
           automaticallyAdjustContentInsets={false}
           style={[this.props.style, {
             flex:1,
