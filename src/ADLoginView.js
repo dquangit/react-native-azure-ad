@@ -187,7 +187,8 @@ export default class ADLoginView extends React.Component {
       this.setState({visible : !this.props.hideAfterLogin})
       this.props.onVisibilityChange && this.props.onVisibilityChange(false)
       this._getResourceAccessToken(code).catch((err) => {
-        log.error('ADLoginView._getResourceAccessToken', err)
+        // log.error('ADLoginView._getResourceAccessToken', err)
+        console.log("Could not get resource access token")
       })
       return true
     }
