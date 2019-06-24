@@ -19,6 +19,7 @@ export default class ReactNativeAD {
 
   config : ADConfig;
   credentials : ADCredentials;
+  responseCallback = (response) => {}
 
   static getContext(client_id:string): ReactNativeAD {
     return _contexts[client_id]
@@ -251,6 +252,7 @@ export default class ReactNativeAD {
           body
         })
         .then((response) => {
+          console.log(response.headers)
           Timer.clearTimeout(tm)
           return response.text()
         })
