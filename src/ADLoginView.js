@@ -104,7 +104,7 @@ export default class ADLoginView extends React.Component {
           }}
           decelerationRate="normal"
           javaScriptEnabledAndroid={true}
-          onNavigationStateChange={this._handleADToken.bind(this)}
+          onNavigationStateChange={this.onNavigationStateChange.bind(this)}
           onShouldStartLoadWithRequest={(e) => {
             return true
           }}
@@ -149,6 +149,11 @@ export default class ADLoginView extends React.Component {
       `&client_id=${context.getConfig().client_id}` +
       `&scope=openid` + 
       (redirect ? `&redirect_uri=${context.getConfig().redirect_uri}&nonce=rnad-${Date.now()}` : '')
+  }
+
+  onNavigationStateChange(event) {
+    this.props.onNavigationStateChange(event)
+    return this._handleADToken(event)
   }
 
   /**
