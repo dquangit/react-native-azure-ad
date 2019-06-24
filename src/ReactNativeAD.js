@@ -255,6 +255,7 @@ export default class ReactNativeAD {
           return response.text()
         })
         .then((res) => {
+          console.log(res)
           let cred: GrantTokenResp = {
             resource : params.resource,
             response : JSON.parse(res.replace('access_token=',''))
