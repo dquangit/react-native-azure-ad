@@ -94,6 +94,7 @@ export default class ADLoginView extends React.Component {
           source={{uri: this.state.page}}
           javaScriptEnabled={true}
           domStorageEnabled={true}
+          onMessage={this.props.onMessage}
           onLoadEnd={()=>{
             if(this._needRedirect){
               this._needRedirect = false
