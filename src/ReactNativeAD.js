@@ -207,16 +207,23 @@ export default class ReactNativeAD {
           Promise.all([
             SecureStore.getItemAsync(`${resourceKey}accesstoken`).then(
               token => {
+                if (!token || token === "") {
+                  throw ("Cannot get access token")
+                }
                 result.access_token = token;
               }
             ),
             SecureStore.getItemAsync(`${resourceKey}refreshtoken`).then(
               token => {
+                if (!token || token === "") {
+                  throw ("Cannot get refresh token")
+                }
                 result.refresh_token = token;
               }
             )
           ])
             .then(value => {
+              console.log("GET TOKEN SUCCESS FROM LOCAL")
               resolve(result);
             })
             .catch(error => {
